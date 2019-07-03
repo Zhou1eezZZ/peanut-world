@@ -1,13 +1,13 @@
 import Vue from 'vue'
-import ElementUI from 'element-ui';
+import ElementUI from 'element-ui'
 import './styles/reset.scss'
-import 'element-ui/lib/theme-chalk/index.css';
+import 'element-ui/lib/theme-chalk/index.css'
 import App from './App.vue'
 
 Vue.config.productionTip = false
 
-Vue.use(ElementUI);
+Vue.use(ElementUI)
 
 new Vue({
-  render: h => h(App),
+  render: h => h(App)
 }).$mount('#app')
