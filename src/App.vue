@@ -7,8 +7,18 @@
           <el-scrollbar class="page-content-nav">
             <div class="page-content-nav-container">
               <ul>
-                <li>list1</li>
-                <li>list2</li>
+                <router-link
+                  to="/"
+                  tag="li"
+                >
+                  Home
+                </router-link>
+                <router-link
+                  to="/article"
+                  tag="li"
+                >
+                  article
+                </router-link>
                 <li>list3</li>
                 <li>list4</li>
                 <li>list5</li>
@@ -17,9 +27,7 @@
           </el-scrollbar>
           <div class="page-content-container">
             <section class="main-content">
-              <h2>content title</h2>
-              <h3>content subtitle</h3>
-              <p>content details</p>
+              <router-view />
             </section>
           </div>
         </div>
@@ -73,8 +81,19 @@ export default {
             padding-bottom: 50px;
             padding-right: 0;
             text-align: left;
+            ul{
+              transition: opacity .3s;
+              opacity: 0.5;
+              &:hover{
+                opacity: 1;
+              }
+            }
             ul li{
               height: 400px;
+              cursor: pointer;
+              &:hover{
+                background-color: aliceblue;
+              }
             }
           }
         }
@@ -84,7 +103,7 @@ export default {
           box-sizing: border-box;
           .main-content{
             padding-top: 50px;
-            h2,h3,p{
+            h1,h2,h3,p{
               height: 500px;
             }
           }
