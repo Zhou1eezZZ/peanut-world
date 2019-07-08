@@ -13,6 +13,8 @@
                 src="https://avatars1.githubusercontent.com/u/30221853?s=460&v=4"
                 alt="avator"
                 class="avator"
+                title="前往作者github主页"
+                @click="clickToGithub"
               >
               <ul>
                 <router-link
@@ -45,7 +47,13 @@
           </el-scrollbar>
           <div class="page-content-container">
             <section class="main-content">
-              <router-view />
+              <transition
+                name="fade"
+                mode="out-in"
+                appear
+              >
+                <router-view />
+              </transition>
             </section>
           </div>
         </div>
@@ -61,6 +69,11 @@ export default {
   name: 'App',
   components: {
     myNav
+  },
+  methods: {
+    clickToGithub() {
+      window.open('https://github.com/Zhou1eezZZ')
+    }
   }
 }
 </script>
@@ -104,6 +117,7 @@ export default {
               width: 48px;
               height: 48px;
               margin: 10px 0;
+              cursor: pointer;
             }
             ul{
               transition: opacity .3s;
@@ -143,5 +157,12 @@ export default {
 }
 /deep/ .el-scrollbar__wrap{
   overflow-x: hidden;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>

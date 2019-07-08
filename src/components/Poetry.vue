@@ -12,7 +12,7 @@
           {{ i.content }}
         </p>
         <p class="poetry-inscription">
-          {{ `————《${i.title}》 ${i.dynasty} · ${i.author}` }}
+          {{ `《${i.title}》 ${i.dynasty} · ${i.author}` }}
         </p>
       </el-card>
     </section>
