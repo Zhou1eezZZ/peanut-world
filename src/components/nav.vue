@@ -2,7 +2,7 @@
   <div class="nav-wrapper">
     <div class="nav">
       <div class="container">
-        <h1>🥜Peanuts</h1>
+        <h1>🥜peanuts</h1>
       </div>
     </div>
   </div>
@@ -41,6 +41,7 @@ export default {
       h1 {
         float: left;
         font-size: 36px;
+        font-family: 'Ubuntu', sans-serif!important;
       }
     }
   }

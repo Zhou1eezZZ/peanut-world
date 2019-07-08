@@ -30,15 +30,15 @@ export default {
 
 <style lang="scss" scoped>
 .poetry-card{
-  font-weight: 700;
+  // font-weight: 700;
   margin-bottom: 20px;
   .poetry-content{
-    font-size: 16px;
+    font-size: 20px;
     text-align: left;
     line-height: 40px;
   }
   .poetry-inscription{
-    font-size:14px;
+    font-size:16px;
     text-align: right;
   }
 }
