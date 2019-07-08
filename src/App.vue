@@ -61,7 +61,7 @@ export default {
 
 <style lang="scss" scoped>
 #app {
-  font-family:'Noto Sans SC','PingFangSC-Regular', Helvetica,"PingFang SC", Tahoma, Arial, "Microsoft YaHei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+  font-family:'Noto Sans SC', Helvetica,"PingFang SC", Tahoma, Arial, "Microsoft YaHei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
