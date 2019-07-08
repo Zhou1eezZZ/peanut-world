@@ -25,7 +25,7 @@
                   to="/article"
                   tag="li"
                 >
-                  article
+                  Article
                 </router-link>
                 <router-link
                   to="/poetry"
@@ -33,7 +33,12 @@
                 >
                   Poetry
                 </router-link>
-                <li>list4</li>
+                <router-link
+                  to="/joke"
+                  tag="li"
+                >
+                  Joke
+                </router-link>
                 <li>list5</li>
               </ul>
             </div>
@@ -46,6 +51,7 @@
         </div>
       </el-scrollbar>
     </div>
+    <el-backtop target=".page-scrollbar .el-scrollbar__wrap" />
   </div>
 </template>
 
