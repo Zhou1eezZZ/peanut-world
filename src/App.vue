@@ -6,6 +6,14 @@
         <div class="page-content">
           <el-scrollbar class="page-content-nav">
             <div class="page-content-nav-container">
+              <h1 style="font-size:14px;color:#777;height:40px;line-height:40px">
+                作者
+              </h1>
+              <img
+                src="https://avatars1.githubusercontent.com/u/30221853?s=460&v=4"
+                alt="avator"
+                class="avator"
+              >
               <ul>
                 <router-link
                   to="/"
@@ -19,7 +27,12 @@
                 >
                   article
                 </router-link>
-                <li>list3</li>
+                <router-link
+                  to="/poetry"
+                  tag="li"
+                >
+                  诗词曲
+                </router-link>
                 <li>list4</li>
                 <li>list5</li>
               </ul>
@@ -48,7 +61,7 @@ export default {
 
 <style lang="scss" scoped>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family:'PingFangSC-Regular', Helvetica, Tahoma, Arial, "Microsoft YaHei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -81,6 +94,11 @@ export default {
             padding-bottom: 50px;
             padding-right: 0;
             text-align: left;
+            .avator{
+              width: 48px;
+              height: 48px;
+              margin: 10px 0;
+            }
             ul{
               transition: opacity .3s;
               opacity: 0.5;
@@ -89,7 +107,12 @@ export default {
               }
             }
             ul li{
-              height: 400px;
+              font-size: 16px;
+              color: #333;
+              line-height: 40px;
+              height: 40px;
+              transition: .15s ease-out;
+              font-weight: 700;
               cursor: pointer;
               &:hover{
                 background-color: aliceblue;

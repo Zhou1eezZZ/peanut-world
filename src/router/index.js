@@ -14,6 +14,11 @@ export default new Router({
       path: '/article',
       name: 'article',
       component: resolve => require(['@/components/Article.vue'], resolve)
+    },
+    {
+      path: '/poetry',
+      name: 'poetry',
+      component: resolve => require(['@/components/Poetry.vue'], resolve)
     }
   ]
 })
