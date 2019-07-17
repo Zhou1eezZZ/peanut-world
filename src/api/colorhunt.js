@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function getColor(data) {
   return request({
-    url: `https://colorhunt.co/hunt.php`,
+    url: `/colorAPI/hunt.php`,
     method: 'post',
     data
   })
