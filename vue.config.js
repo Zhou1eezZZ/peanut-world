@@ -9,13 +9,6 @@ module.exports = {
         pathRewrite: {
           '^/colorAPI': ''
         }
-      },
-      '/api': {
-        target: 'http://api.jisuapi.com',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/api': ''
-        }
       }
     }
   }

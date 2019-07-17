@@ -1,6 +1,12 @@
 <template>
   <div class="color-font">
-    <h1>color page</h1>
+    <h1>
+      Popular palettes from
+      <img
+        src="https://colorhunt.co/img/color-hunt-palettes-logo.png"
+        alt="colorhunt"
+      > Color Hunt
+    </h1>
     <div class="cards-wrapper">
       <el-card
         v-for="(item,index) in colorArr"
@@ -59,14 +65,15 @@
 <script>
 import ColorHuntAPI from '@/api/colorhunt'
 import Clipboard from 'clipboard'
+import colorArr from '@/assets/color'
 export default {
   data() {
     return {
-      colorArr: []
+      colorArr
     }
   },
   created() {
-    this.getcolor()
+    // this.getcolor()
   },
   methods: {
     getcolor() {
@@ -114,6 +121,17 @@ export default {
 <style lang="scss" scoped>
 .color-font{
   font-family: 'Rubik',arial;
+  h1{
+    font-weight: 600;
+    font-synthesis: style;
+    font-size: 24px;
+    line-height: 1.22;
+    margin: 24px 0;
+  }
+  img{
+    width: 24px;
+    height: 24px;
+  }
 }
 .cards-wrapper {
   display: grid;
