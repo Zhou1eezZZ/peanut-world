@@ -41,7 +41,12 @@
                 >
                   Joke
                 </router-link>
-                <li>list5</li>
+                <router-link
+                  to="/color"
+                  tag="li"
+                >
+                  Color
+                </router-link>
               </ul>
             </div>
           </el-scrollbar>
@@ -69,6 +74,13 @@ export default {
   name: 'App',
   components: {
     myNav
+  },
+  mounted() {
+    // 路由跳转时将页面滚动到顶部（由于使用了el-scrollbar，window.scrollTo(0,0)无效）
+    this.$router.afterEach((to, from, next) => {
+      const el = document.querySelector('.page-scrollbar .el-scrollbar__wrap')
+      el.scrollTop = 0
+    })
   },
   methods: {
     clickToGithub() {
@@ -160,7 +172,7 @@ export default {
 }
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s;
+  transition: opacity 0.2s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;

@@ -1,5 +1,6 @@
 <template>
   <div class="article-container">
+    <pre><code lang="js">{{ code }}</code></pre>
     <h1 class="article-h1">
       {{ article.title }}
     </h1>
@@ -47,7 +48,11 @@ import articles from '../assets/article'
 export default {
   data() {
     return {
-      articles
+      articles,
+      code: `this.$router.afterEach((to, from, next) => {
+  const el = document.querySelector('.page-scrollbar .el-scrollbar__wrap')
+  el.scrollTop = 0
+})`
     }
   },
   computed: {
@@ -96,6 +101,24 @@ export default {
     padding: 16px 0;
     font-size: 14px;
     color: #8590a6;
+  }
+  pre{
+    position: relative;
+    line-height: 1.75;
+    code{
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      color: #333;
+      background: #f8f8f8;
+      padding: 15px 12px;
+      font-size: 12px;
+      margin: 0;
+      word-break: normal;
+      display: block;
+      text-align: left;
+      font-family: Menlo,Monaco,Consolas,Courier New,monospace;
+      border-radius: 2px;
+    }
   }
 }
 </style>

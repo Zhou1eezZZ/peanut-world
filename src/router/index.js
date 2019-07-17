@@ -24,6 +24,11 @@ export default new Router({
       path: '/joke',
       name: 'joke',
       component: resolve => require(['@/components/Joke.vue'], resolve)
+    },
+    {
+      path: '/color',
+      name: 'color',
+      component: resolve => require(['@/components/Color.vue'], resolve)
     }
   ]
 })

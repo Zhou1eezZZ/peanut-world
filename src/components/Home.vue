@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>home page</h1>
-    <p>welcome to peanuts' world!This is a place where I can say anything like NM$L & W$ND😶.</p>
+    <p>welcome to peanuts' world ! This is a place where I can say anything like NM$L & W$ND😶.</p>
     <p>Coming soon...</p>
     <div class="bouncing-loader">
       <div />
