@@ -70,4 +70,28 @@ Card是一个纯JS项目（有jQuery版本）, 提供非常酷的实时展示卡
 
 > 项目地址：【[传送门](https://docsify.js.org/#/)】
 
->peanut 编辑于 2019-07-08
+### 10.WebGradients
+
+![WebGradients](https://pic3.zhimg.com/80/v2-04eb1248225287a02c93c059a916177e_hd.jpg)
+
+WebGradients 收集了一系列漂亮的色彩渐变，你可以将它们轻松的应用在任何 HTML 页面上。你可以通过快速预览，或是全屏查看可用的渐变色，然后仅需要一键复制 CSS 属性，即可将它们应用到你的项目中去。
+
+> 项目地址：【[传送门](https://webgradients.com/)】
+
+### 11.React Beautiful DnD
+
+![React Beautiful DnD](https://pic4.zhimg.com/v2-3f8cf24a97e7a461986d57557860d59f_b.gif)
+
+这是由 Atlassian 开源的用于制作拖拽组件的 React 库。它提供了强大、易用的 API，以及丰富的定制选项和控件。它所生成的组件，也具备了平滑的 GPU 动画效果。当元素被拾取或重新排序时，其效果将会展示出来。
+
+> 项目地址：【[传送门](https://github.com/atlassian/react-beautiful-dnd)】
+
+### 12.Push
+
+![Push](https://pic1.zhimg.com/80/v2-ffbbd45dd8494f767f3d19d2731c6d80_hd.png)
+
+Push 是一个通用的桌面通知框架。它基于强大的 Notification API ，可作为可靠的跨浏览器解决方案，如果用户的浏览器不支持最新的 API，则会沿用老版 API 实现。
+
+> 项目地址：【[传送门](https://pushjs.org/)】
+
+>peanut 最后编辑于 2019-08-06

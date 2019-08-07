@@ -27,15 +27,21 @@ export default {
   methods: {
     getMarkdownFileContent() {
       const vm = this
-      Promise.resolve(import(`../markdown/article${vm.articleId}.md`)).then(article => {
-        vm.mdConent = article.default
-      }, (e) => {
-        vm.$message({
-          type: 'error',
-          message: '读取文章md文件失败！'
-        })
-        vm.$router.push({ path: '/article' })
-      })
+      Promise.resolve(
+                import(`../markdown/article${vm.articleId}.md`)
+      ).then(
+        article => {
+          console.log(article)
+          vm.mdConent = article.default
+        },
+        e => {
+          vm.$message({
+            type: 'error',
+            message: '读取文章md文件失败！'
+          })
+          vm.$router.push({ path: '/article' })
+        }
+      )
     },
     goBack() {
       this.$router.push({ path: '/article' })
@@ -45,8 +51,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.article-container{
-  width: 690px;
-  text-align:left;
+.article-container {
+    width: 690px;
+    text-align: left;
 }
 </style>

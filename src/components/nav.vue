@@ -37,7 +37,7 @@ export default {
       margin: 0 auto;
       height: 100%;
       box-sizing: border-box;
-      border-bottom: 1px solid #dcdfe6;
+      border-bottom: 1px dashed #dcdfe6;
       h1 {
         float: left;
         font-size: 36px;

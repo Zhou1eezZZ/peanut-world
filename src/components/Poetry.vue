@@ -30,7 +30,6 @@ export default {
   },
   methods: {
     copyOnClick() {
-      // debugger
       const clipboard = new Clipboard('.poetry-card')
       const vm = this
       clipboard.on('success', e => {
@@ -56,16 +55,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.poetry-card{
-  margin-bottom: 20px;
-  .poetry-content{
-    font-size: 16px;
-    text-align: left;
-    line-height: 40px;
-  }
-  .poetry-inscription{
-    font-size:16px;
-    text-align: right;
-  }
+.poetry-card {
+    margin-bottom: 20px;
+    .poetry-content {
+        font-size: 16px;
+        text-align: left;
+        line-height: 40px;
+    }
+    .poetry-inscription {
+        font-size: 16px;
+        text-align: right;
+    }
 }
 </style>

@@ -78,7 +78,9 @@ export default {
   mounted() {
     // 路由跳转时将页面滚动到顶部（由于使用了el-scrollbar，window.scrollTo(0,0)无效）
     this.$router.afterEach((to, from, next) => {
-      const el = document.querySelector('.page-scrollbar .el-scrollbar__wrap')
+      const el = document.querySelector(
+        '.page-scrollbar .el-scrollbar__wrap'
+      )
       el.scrollTop = 0
     })
   },
@@ -92,89 +94,93 @@ export default {
 
 <style lang="scss" scoped>
 #app {
-  font-family:'Noto Sans SC', Helvetica,"PingFang SC", Tahoma, Arial, "Microsoft YaHei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  height: 100%;
-  overflow: hidden;
-  overflow-y: hidden;
-  .main-content{
-    padding: 0;
-    margin-top: 0;
+    font-family: 'Noto Sans SC', Helvetica, 'PingFang SC', Tahoma, Arial,
+        'Microsoft YaHei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
     height: 100%;
-    min-height: auto;
-    .page-scrollbar{
-      height: calc(100% - 80px);
-      margin-top: 80px;
-      .page-content{
-        width: 1140px;
+    overflow: hidden;
+    overflow-y: hidden;
+    .main-content {
         padding: 0;
-        margin: 0 auto;
-        &-nav{
-          width: 240px;
-          position: fixed;
-          top: 0;
-          bottom: 0;
-          margin-top: 80px;
-          transition: padding-top .3s;
-          &-container{
-            height: 100%;
-            padding-top: 50px;
-            padding-bottom: 50px;
-            padding-right: 0;
-            text-align: left;
-            .avator{
-              width: 48px;
-              height: 48px;
-              margin: 10px 0;
-              cursor: pointer;
+        margin-top: 0;
+        height: 100%;
+        min-height: auto;
+        .page-scrollbar {
+            height: calc(100% - 80px);
+            margin-top: 80px;
+            .page-content {
+                width: 1140px;
+                padding: 0;
+                margin: 0 auto;
+                &-nav {
+                    width: 240px;
+                    position: fixed;
+                    top: 0;
+                    bottom: 0;
+                    margin-top: 80px;
+                    transition: padding-top 0.3s;
+                    &-container {
+                        height: 100%;
+                        margin-top: 50px;
+                        margin-bottom: 50px;
+                        padding-right: 0;
+                        text-align: left;
+                        .avator {
+                            width: 48px;
+                            height: 48px;
+                            margin: 10px 0;
+                            cursor: pointer;
+                        }
+                        ul {
+                            transition: opacity 0.3s;
+                            opacity: 0.5;
+                            &:hover {
+                                opacity: 1;
+                            }
+                        }
+                        ul li {
+                            font-size: 16px;
+                            color: #333;
+                            line-height: 40px;
+                            height: 40px;
+                            transition: 0.15s ease-out;
+                            font-weight: 700;
+                            cursor: pointer;
+                            &:hover {
+                                background-color: aliceblue;
+                            }
+                        }
+                    }
+                }
+                &-container {
+                    padding-left: 270px;
+                    padding-bottom: 100px;
+                    box-sizing: border-box;
+                    .main-content {
+                        padding-top: 50px;
+                        h1,
+                        h2,
+                        h3,
+                        p {
+                            height: 500px;
+                        }
+                    }
+                }
             }
-            ul{
-              transition: opacity .3s;
-              opacity: 0.5;
-              &:hover{
-                opacity: 1;
-              }
-            }
-            ul li{
-              font-size: 16px;
-              color: #333;
-              line-height: 40px;
-              height: 40px;
-              transition: .15s ease-out;
-              font-weight: 700;
-              cursor: pointer;
-              &:hover{
-                background-color: aliceblue;
-              }
-            }
-          }
         }
-        &-container{
-          padding-left: 270px;
-          padding-bottom: 100px;
-          box-sizing: border-box;
-          .main-content{
-            padding-top: 50px;
-            h1,h2,h3,p{
-              height: 500px;
-            }
-          }
-        }
-      }
     }
-  }
 }
-/deep/ .el-scrollbar__wrap{
-  overflow-x: hidden;
+/deep/ .el-scrollbar__wrap {
+    overflow-x: hidden;
 }
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.2s;
+    transition: opacity 0.2s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
+    opacity: 0;
 }
 </style>
