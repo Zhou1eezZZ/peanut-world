@@ -47,6 +47,12 @@
                 >
                   Color
                 </router-link>
+                <router-link
+                  to="/music"
+                  tag="li"
+                >
+                  Music
+                </router-link>
               </ul>
             </div>
           </el-scrollbar>

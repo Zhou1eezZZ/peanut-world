@@ -34,6 +34,11 @@ export default new Router({
       path: '/color',
       name: 'color',
       component: resolve => require(['@/components/Color.vue'], resolve)
+    },
+    {
+      path: '/music',
+      name: 'music',
+      component: resolve => require(['@/components/Music.vue'], resolve)
     }
   ]
 })

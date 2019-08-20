@@ -28,7 +28,7 @@ export default {
     getMarkdownFileContent() {
       const vm = this
       Promise.resolve(
-                import(`../markdown/article${vm.articleId}.md`)
+        import(`../markdown/article${vm.articleId}.md`)
       ).then(
         article => {
           console.log(article)
