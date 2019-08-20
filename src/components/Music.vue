@@ -118,7 +118,7 @@ export default {
           const { level, index } = arr[i]
           this.playAudio(index - 1, level)
         }
-        await this.sleep(800)
+        await this.sleep(300)
       }
     }
   }
