@@ -14,10 +14,25 @@
         @mouseup="stopAudio()"
       >{{ indexArr+1 }}</span>
     </div>
+    <el-divider />
+    <el-button
+      type="text"
+      @click="diyPlay(XIAOXINGYUN)"
+    >
+      点击播放小幸运
+    </el-button>
+    <el-button
+      type="text"
+      @click="diyPlay(DITIEDENGDAI)"
+    >
+      点击播放地铁等待
+    </el-button>
   </div>
 </template>
 
 <script>
+import { XIAOXINGYUN, DITIEDENGDAI } from '../assets/music'
+// 定义音符
 const VOICE_MAP = {
   0: [261.63, 293.67, 329.63, 349.23, 391.99, 440, 493.88],
   1: [523.25, 587.33, 659.26, 698.46, 783.99, 880, 987.77],
@@ -27,45 +42,16 @@ export default {
   data() {
     return {
       VOICE_MAP,
+      XIAOXINGYUN,
+      DITIEDENGDAI,
       audioCtx: null,
       oscillator: null,
-      gainNode: null,
-      testArr: [
-        { level: 1, index: 3 },
-        { level: 1, index: 3 },
-        { level: 1, index: 5 },
-        { level: 1, index: 5 },
-        { level: 2, index: 1 },
-        { level: 2, index: 1 },
-        { level: 1, index: 7 },
-        { level: 1, index: 7 }, // 7后面延迟一下
-        { level: 1, index: 7 },
-        { level: 1, index: 6 },
-        { level: 1, index: 3 },
-        { level: 1, index: 6 },
-        { level: 1, index: 6 }, // 6和6是连的，delay一下
-        { stop: true }, // 一句唱完了，停一下
-        { level: 1, index: 3 },
-        { level: 1, index: 3 },
-        { level: 1, index: 5 },
-        { level: 1, index: 5 },
-        { level: 2, index: 1 },
-        { level: 2, index: 1 },
-        { level: 1, index: 7 },
-        { level: 1, index: 7 }, // 7后面延迟一下
-        { level: 1, index: 7 },
-        { level: 1, index: 6 },
-        { level: 1, index: 3 },
-        { level: 1, index: 6 },
-        { level: 1, index: 6 },
-        { stop: true } // 一句唱完了，停一下
-      ]
+      gainNode: null
     }
   },
   created() {
     // 创建音频上下文
     this.audioCtx = new AudioContext()
-    this.diyPlay(this.testArr)
   },
   methods: {
     playAudio(index, level) {
@@ -93,7 +79,7 @@ export default {
       )
       // 声音开始
       this.oscillator.start(this.audioCtx.currentTime)
-      console.log('index:' + (index + 1) + 'level:' + level)
+      console.log('level:' + level + 'index:' + (index + 1))
     },
     stopAudio(time = 0.8) {
       // 默认0.8秒后停止声音
@@ -114,11 +100,17 @@ export default {
         if (arr[i].stop) {
           console.log('stop')
           this.stopAudio(0.001)
+        } else if (arr[i].delay) {
+          console.log('delay')
+          let count = 1
+          while (arr[i - count].delay) { count++ }
+          const { level, index } = arr[i - count]
+          this.playAudio(index - 1, level)
         } else {
           const { level, index } = arr[i]
           this.playAudio(index - 1, level)
         }
-        await this.sleep(300)
+        await this.sleep(500)
       }
     }
   }
@@ -139,14 +131,12 @@ export default {
         border: 1px #a12d21 solid;
         margin: 2px;
     }
-
     .level0::after {
         content: '.';
         position: relative;
         top: 4px;
         left: -7px;
     }
-
     .level2::before {
         content: '.';
         position: relative;
