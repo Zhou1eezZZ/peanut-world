@@ -2,7 +2,11 @@
   <div class="nav-wrapper">
     <div class="nav">
       <div class="container">
-        <h1>🥜peanuts</h1>
+        <img
+          src="../../public/peanut.webp"
+          width="50"
+        >
+        <h1>peanuts</h1>
       </div>
     </div>
   </div>
@@ -38,6 +42,10 @@ export default {
       height: 100%;
       box-sizing: border-box;
       border-bottom: 1px dashed #dcdfe6;
+      img{
+        float: left;
+        margin:15px 5px;
+      }
       h1 {
         float: left;
         font-size: 36px;

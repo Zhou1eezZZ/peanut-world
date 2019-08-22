@@ -18,40 +18,14 @@
               >
               <ul>
                 <router-link
-                  to="/"
+                  v-for="(i,index) in routerList"
+                  :key="index"
+                  :to="`/${i}`"
                   tag="li"
+                  :class="{'active':activeTab===i}"
+                  @click.native="setActiveTab(i)"
                 >
-                  Home
-                </router-link>
-                <router-link
-                  to="/article"
-                  tag="li"
-                >
-                  Article
-                </router-link>
-                <router-link
-                  to="/poetry"
-                  tag="li"
-                >
-                  Poetry
-                </router-link>
-                <router-link
-                  to="/joke"
-                  tag="li"
-                >
-                  Joke
-                </router-link>
-                <router-link
-                  to="/color"
-                  tag="li"
-                >
-                  Color
-                </router-link>
-                <router-link
-                  to="/music"
-                  tag="li"
-                >
-                  Music
+                  {{ i.charAt(0).toUpperCase()+i.slice(1) }}
                 </router-link>
               </ul>
             </div>
@@ -81,6 +55,20 @@ export default {
   components: {
     myNav
   },
+  data() {
+    return {
+      activeTab: 'home',
+      routerList: [
+        'home',
+        'article',
+        'poetry',
+        'joke',
+        'color',
+        'music',
+        'lab'
+      ]
+    }
+  },
   mounted() {
     // 路由跳转时将页面滚动到顶部（由于使用了el-scrollbar，window.scrollTo(0,0)无效）
     this.$router.afterEach((to, from, next) => {
@@ -93,6 +81,9 @@ export default {
   methods: {
     clickToGithub() {
       window.open('https://github.com/Zhou1eezZZ')
+    },
+    setActiveTab(tabName) {
+      this.activeTab = tabName
     }
   }
 }
@@ -146,6 +137,10 @@ export default {
                             &:hover {
                                 opacity: 1;
                             }
+                            .active {
+                              background-color: aliceblue;
+                              margin-left: 10px;
+                            }
                         }
                         ul li {
                             font-size: 16px;
@@ -156,7 +151,8 @@ export default {
                             font-weight: 700;
                             cursor: pointer;
                             &:hover {
-                                background-color: aliceblue;
+                              background-color: aliceblue;
+                              margin-left: 10px;
                             }
                         }
                     }
