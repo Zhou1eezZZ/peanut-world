@@ -1,10 +1,8 @@
 ## 你可能不知道的css骚操作——表单验证🤦‍
 
-![firstPic](https://user-gold-cdn.xitu.io/2019/8/5/16c612cca1c9a96c?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
-
 ### 效果图
 
-![rending](https://user-gold-cdn.xitu.io/2019/8/5/16c615e60dd01ead?imageslim)
+![rending](https://raw.githubusercontent.com/Zhou1eezZZ/Image/master/peanut-world/article/2/rending.webp)
 
 ### 原理
 

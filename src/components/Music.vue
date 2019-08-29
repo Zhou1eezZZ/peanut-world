@@ -46,12 +46,20 @@ export default {
       DITIEDENGDAI,
       audioCtx: null,
       oscillator: null,
-      gainNode: null
+      gainNode: null,
+      isMounted: false
     }
   },
   created() {
     // 创建音频上下文
     this.audioCtx = new AudioContext()
+  },
+  mounted() {
+    this.isMounted = true
+  },
+  beforeDestroy() {
+    this.stopAudio(0.01)
+    this.isMounted = false
   },
   methods: {
     playAudio(index, level) {
@@ -97,20 +105,22 @@ export default {
     },
     async diyPlay(arr) {
       for (let i = 0; i < arr.length; i++) {
-        if (arr[i].stop) {
-          console.log('stop')
-          this.stopAudio(0.001)
-        } else if (arr[i].delay) {
-          console.log('delay')
-          let count = 1
-          while (arr[i - count].delay) { count++ }
-          const { level, index } = arr[i - count]
-          this.playAudio(index - 1, level)
-        } else {
-          const { level, index } = arr[i]
-          this.playAudio(index - 1, level)
+        if (this.isMounted) {
+          if (arr[i].stop) {
+            console.log('stop')
+            this.stopAudio(0.001)
+          } else if (arr[i].delay) {
+            console.log('delay')
+            let count = 1
+            while (arr[i - count].delay) { count++ }
+            const { level, index } = arr[i - count]
+            this.playAudio(index - 1, level)
+          } else {
+            const { level, index } = arr[i]
+            this.playAudio(index - 1, level)
+          }
+          await this.sleep(500)
         }
-        await this.sleep(500)
       }
     }
   }
