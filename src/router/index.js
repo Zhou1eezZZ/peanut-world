@@ -7,6 +7,11 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'root',
+      redirect: '/home'
+    },
+    {
+      path: '/home',
       name: 'home',
       component: resolve => require(['@/components/Home.vue'], resolve)
     },

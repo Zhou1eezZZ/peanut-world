@@ -69,6 +69,9 @@ export default {
       ]
     }
   },
+  updated() {
+    this.activeTab = this.$router.history.current.name
+  },
   mounted() {
     // 路由跳转时将页面滚动到顶部（由于使用了el-scrollbar，window.scrollTo(0,0)无效）
     this.$router.afterEach((to, from, next) => {
@@ -76,6 +79,14 @@ export default {
         '.page-scrollbar .el-scrollbar__wrap'
       )
       el.scrollTop = 0
+    })
+    // 添加断网监听，断网才会触发，所以获取不到element的图标=。=
+    window.addEventListener('offline', () => {
+      this.$message({
+        type: 'error',
+        message: '您与网络已经断开链接...',
+        showClose: true
+      })
     })
   },
   methods: {
