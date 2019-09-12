@@ -82,6 +82,42 @@ const poetry = [
     title: '说苑·政理',
     author: '刘向',
     dynasty: '汉'
+  },
+  {
+    content: '百年慵里过，万事醉中休。',
+    title: '闲坐',
+    author: '白居易',
+    dynasty: '唐'
+  },
+  {
+    content: '醒也无聊，醉也无聊，梦也何曾到谢桥。',
+    title: '采桑子',
+    author: '纳兰性德',
+    dynasty: '清'
+  },
+  {
+    content: '奈心中事，眼中泪，意中人。',
+    title: '行香子',
+    author: '张先',
+    dynasty: '宋'
+  },
+  {
+    content: '桃李春风一杯酒，江湖夜雨十年灯。',
+    title: '寄黄几复',
+    author: '黄庭坚',
+    dynasty: '宋'
+  },
+  {
+    content: '雅态妍姿正欢洽，落花流水忽西东。',
+    title: '雪梅香·景萧索',
+    author: '柳永',
+    dynasty: '宋'
+  },
+  {
+    content: '独坐黄昏谁是伴，紫薇花对紫微郎。',
+    title: '紫薇花',
+    author: '白居易',
+    dynasty: '唐'
   }
 ]
 

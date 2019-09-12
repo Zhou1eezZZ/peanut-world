@@ -10,9 +10,41 @@
 </template>
 
 <script>
+const target = {
+  field1: 1,
+  field2: undefined,
+  field3: {
+    child: 'child'
+  },
+  field4: [2, 4, 8]
+}
+target.target = target
 export default {
   data() {
     return {}
+  },
+  mounted() {
+    console.log(this.clone(target))
+  },
+  methods: {
+    // 深拷贝函数
+    // WeakMap与Map不同的地方在于，其键必须是对象，键是弱引用，因此会在键对象消失后自动释放内存
+    clone(target, map = new WeakMap()) {
+      if (typeof target === 'object') {
+        const cloneTarget = Array.isArray(target) ? [] : {}
+        if (map.get(target)) {
+          return map.get(target)
+        }
+        map.set(target, cloneTarget)
+        for (const key in target) {
+          cloneTarget[key] = this.clone(target[key], map)
+        }
+        console.log(map)
+        return cloneTarget
+      } else {
+        return target
+      }
+    }
   }
 }
 </script>

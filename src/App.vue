@@ -62,9 +62,9 @@ export default {
         'home',
         'article',
         'poetry',
-        'joke',
+        // 'joke',
         'color',
-        'music',
+        // 'music',
         'lab'
       ]
     }

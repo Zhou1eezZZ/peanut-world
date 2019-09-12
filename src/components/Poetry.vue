@@ -28,6 +28,9 @@ export default {
       poertyList
     }
   },
+  mounted() {
+    // ...
+  },
   methods: {
     copyOnClick() {
       const clipboard = new Clipboard('.poetry-card')

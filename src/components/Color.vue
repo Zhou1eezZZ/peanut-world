@@ -50,10 +50,8 @@
           >{{ `#${item.code.substring(18,24)}` }}</span>
         </div>
         <div class="card-tool">
-          <el-button
-            plain
-          >
-            {{ `💖  ${item.likes}` }}
+          <el-button plain>
+            {{ `💖 ${item.likes}` }}
           </el-button>
           <span>{{ item.date.replace(/\//g,'-') }}</span>
         </div>
@@ -72,9 +70,6 @@ export default {
       colorArr
     }
   },
-  created() {
-    // this.getcolor()
-  },
   methods: {
     getcolor() {
       const vm = this
@@ -88,7 +83,7 @@ export default {
             .replace(/<script>/, '')
             .replace(/<\/script>/, '')
           // eslint-disable-next-line
-          let arr = eval(code);
+                    let arr = eval(code);
           vm.colorArr = arr
         }
       })
@@ -119,80 +114,80 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.color-font{
-  font-family: 'Rubik',arial;
-  h1{
-    font-weight: 600;
-    font-synthesis: style;
-    font-size: 24px;
-    line-height: 1.22;
-    margin: 24px 0;
-  }
-  img{
-    width: 24px;
-    height: 24px;
-  }
+.color-font {
+    font-family: 'Rubik', arial;
+    h1 {
+        font-weight: 600;
+        font-synthesis: style;
+        font-size: 24px;
+        line-height: 1.22;
+        margin: 24px 0;
+    }
+    img {
+        width: 24px;
+        height: 24px;
+    }
 }
 .cards-wrapper {
-  display: grid;
-  grid-template-columns: repeat(3, 275px);
-  grid-column-gap: 20px;
-  .color-card {
-    width: 260px;
-    height: 320px;
-    margin: 8px;
-    padding: 15px;
-    box-sizing: border-box;
-    .color-block {
-      width: 100%;
-      cursor: pointer;
-      position: relative;
-      &:hover{
-        span{
-          opacity: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 275px);
+    grid-column-gap: 20px;
+    .color-card {
+        width: 260px;
+        height: 320px;
+        margin: 8px;
+        padding: 15px;
+        box-sizing: border-box;
+        .color-block {
+            width: 100%;
+            cursor: pointer;
+            position: relative;
+            &:hover {
+                span {
+                    opacity: 1;
+                }
+            }
+            span {
+                position: absolute;
+                text-align: center;
+                transition: all 0.2s;
+                bottom: 0;
+                left: 0;
+                color: #fff;
+                opacity: 0;
+                text-transform: uppercase;
+                background-color: rgba(0, 0, 0, 0.1);
+                padding: 3px 6px;
+                border-radius: 0 3px 0 0;
+                cursor: pointer;
+                letter-spacing: 1px;
+            }
         }
-      }
-      span {
-        position: absolute;
-        text-align: center;
-        transition: all 0.2s;
-        bottom: 0;
-        left: 0;
-        color: #fff;
-        opacity: 0;
-        text-transform: uppercase;
-        background-color: rgba(0, 0, 0, 0.1);
-        padding: 3px 6px;
-        border-radius: 0 3px 0 0;
-        cursor: pointer;
-        letter-spacing: 1px;
-      }
+        .block1 {
+            height: 94px;
+        }
+        .block2 {
+            height: 60px;
+        }
+        .block3 {
+            height: 40px;
+        }
+        .block4 {
+            height: 35px;
+        }
+        .card-tool {
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            span {
+                font-size: 12px;
+                color: #899bb4;
+            }
+        }
     }
-    .block1 {
-      height: 94px;
-    }
-    .block2 {
-      height: 60px;
-    }
-    .block3 {
-      height: 40px;
-    }
-    .block4 {
-      height: 35px;
-    }
-    .card-tool{
-      margin-top: 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      span{
-        font-size: 12px;
-        color: #899bb4;
-      }
-    }
-  }
 }
 /deep/ .el-card__body {
-  padding: 0;
+    padding: 0;
 }
 </style>

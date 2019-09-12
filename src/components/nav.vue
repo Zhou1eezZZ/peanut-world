@@ -4,7 +4,7 @@
       <div class="container">
         <img
           src="../../public/peanut.webp"
-          width="50"
+          width="35"
         >
         <h1>peanuts</h1>
       </div>
@@ -44,12 +44,12 @@ export default {
       border-bottom: 1px dashed #dcdfe6;
       img{
         float: left;
-        margin:15px 5px;
+        margin:25px 5px;
       }
       h1 {
         float: left;
         font-size: 36px;
-        font-family: 'Ubuntu', sans-serif!important;
+        font-family: 'Kalam', sans-serif!important;
       }
     }
   }

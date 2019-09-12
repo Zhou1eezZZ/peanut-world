@@ -7,14 +7,21 @@
       style="margin-top:15px;"
       :pages="imgList"
     />
+    <el-divider />
+    <h3>对话框形式表单</h3>
+    <el-card style="margin-top:20px">
+      <conversation-form />
+    </el-card>
   </div>
 </template>
 
 <script>
 import WipeCard from './utils/WipeCard'
+import ConversationForm from './utils/ConversationForm'
 export default {
   components: {
-    WipeCard
+    WipeCard,
+    ConversationForm
   },
   data() {
     return {
