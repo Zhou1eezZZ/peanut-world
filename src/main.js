@@ -11,14 +11,14 @@ Vue.config.productionTip = false
 Vue.use(ElementUI)
 
 router.beforeEach((to, from, next) => {
-  next()
+    next()
 })
 
-router.afterEach(to => {
-  window.scrollTo(0, 0)
+router.afterEach(() => {
+    window.scrollTo(0, 0)
 })
 
 new Vue({
-  router,
-  render: h => h(App)
+    router,
+    render: h => h(App)
 }).$mount('#app')

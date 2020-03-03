@@ -1,63 +1,61 @@
 <template>
-  <div class="color-font">
-    <h1>
-      Popular palettes from
-      <img
-        src="https://colorhunt.co/img/color-hunt-palettes-logo.png"
-        alt="colorhunt"
-      > Color Hunt
-    </h1>
-    <div class="cards-wrapper">
-      <el-card
-        v-for="(item,index) in colorArr"
-        :key="index"
-        class="color-card"
-      >
-        <div
-          class="color-block block1"
-          :style="`background-color:#${item.code.substring(0,6)}`"
-        >
-          <span
-            :data-clipboard-text="`#${item.code.substring(0,6)}`"
-            @click="copyOnClick"
-          >{{ `#${item.code.substring(0,6)}` }}</span>
+    <div class="color-font">
+        <h1>
+            Popular palettes from
+            <img src="https://colorhunt.co/img/color-hunt-palettes-logo.png" alt="colorhunt" />
+            Color Hunt
+        </h1>
+        <div class="cards-wrapper">
+            <el-card v-for="(item, index) in colorArr" :key="index" class="color-card">
+                <div
+                    class="color-block block1"
+                    :style="`background-color:#${item.code.substring(0, 6)}`"
+                >
+                    <span
+                        :data-clipboard-text="`#${item.code.substring(0, 6)}`"
+                        @click="copyOnClick"
+                        >{{ `#${item.code.substring(0, 6)}` }}</span
+                    >
+                </div>
+                <div
+                    class="color-block block2"
+                    :style="`background-color:#${item.code.substring(6, 12)}`"
+                >
+                    <span
+                        :data-clipboard-text="`#${item.code.substring(6, 12)}`"
+                        @click="copyOnClick"
+                        >{{ `#${item.code.substring(6, 12)}` }}</span
+                    >
+                </div>
+                <div
+                    class="color-block block3"
+                    :style="`background-color:#${item.code.substring(12, 18)}`"
+                >
+                    <span
+                        :data-clipboard-text="`#${item.code.substring(12, 18)}`"
+                        @click="copyOnClick"
+                        >{{ `#${item.code.substring(12, 18)}` }}</span
+                    >
+                </div>
+                <div
+                    class="color-block block4"
+                    :style="`background-color:#${item.code.substring(18, 24)}`"
+                >
+                    <span
+                        :data-clipboard-text="`#${item.code.substring(18, 24)}`"
+                        @click="copyOnClick"
+                        >{{ `#${item.code.substring(18, 24)}` }}</span
+                    >
+                </div>
+                <div class="card-tool">
+                    <el-button plain>
+                        {{ `💖 ${item.likes}` }}
+                    </el-button>
+                    <span>{{ item.date.replace(/\//g, '-') }}</span>
+                </div>
+            </el-card>
         </div>
-        <div
-          class="color-block block2"
-          :style="`background-color:#${item.code.substring(6,12)}`"
-        >
-          <span
-            :data-clipboard-text="`#${item.code.substring(6,12)}`"
-            @click="copyOnClick"
-          >{{ `#${item.code.substring(6,12)}` }}</span>
-        </div>
-        <div
-          class="color-block block3"
-          :style="`background-color:#${item.code.substring(12,18)}`"
-        >
-          <span
-            :data-clipboard-text="`#${item.code.substring(12,18)}`"
-            @click="copyOnClick"
-          >{{ `#${item.code.substring(12,18)}` }}</span>
-        </div>
-        <div
-          class="color-block block4"
-          :style="`background-color:#${item.code.substring(18,24)}`"
-        >
-          <span
-            :data-clipboard-text="`#${item.code.substring(18,24)}`"
-            @click="copyOnClick"
-          >{{ `#${item.code.substring(18,24)}` }}</span>
-        </div>
-        <div class="card-tool">
-          <el-button plain>
-            {{ `💖 ${item.likes}` }}
-          </el-button>
-          <span>{{ item.date.replace(/\//g,'-') }}</span>
-        </div>
-      </el-card>
     </div>
-  </div>
 </template>
 
 <script>
@@ -65,51 +63,49 @@ import ColorHuntAPI from '@/api/colorhunt'
 import Clipboard from 'clipboard'
 import colorArr from '@/assets/color'
 export default {
-  data() {
-    return {
-      colorArr
-    }
-  },
-  methods: {
-    getcolor() {
-      const vm = this
-      const formData = new FormData()
-      formData.append('step', 0)
-      formData.append('sort', 'popular')
-      formData.append('tags', '')
-      ColorHuntAPI.getColor(formData).then(res => {
-        if (res.status === 200 && res.data) {
-          const code = res.data
-            .replace(/<script>/, '')
-            .replace(/<\/script>/, '')
-          // eslint-disable-next-line
-                    let arr = eval(code);
-          vm.colorArr = arr
+    data() {
+        return {
+            colorArr
         }
-      })
     },
-    copyOnClick() {
-      const clipboard = new Clipboard('span')
-      const vm = this
-      clipboard.on('success', e => {
-        vm.$message({
-          type: 'success',
-          message: 'copied',
-          duration: 1000
-        })
-        e.clearSelection()
-        clipboard.destroy()
-      })
-      clipboard.on('error', e => {
-        vm.$message({
-          type: 'warning',
-          message: '浏览器不支持自动复制',
-          duration: 1000
-        })
-        clipboard.destroy()
-      })
+    methods: {
+        getcolor() {
+            const vm = this
+            const formData = new FormData()
+            formData.append('step', 0)
+            formData.append('sort', 'popular')
+            formData.append('tags', '')
+            ColorHuntAPI.getColor(formData).then(res => {
+                if (res.status === 200 && res.data) {
+                    const code = res.data.replace(/<script>/, '').replace(/<\/script>/, '')
+                    // eslint-disable-next-line
+          let arr = eval(code)
+                    vm.colorArr = arr
+                }
+            })
+        },
+        copyOnClick() {
+            const clipboard = new Clipboard('span')
+            const vm = this
+            clipboard.on('success', e => {
+                vm.$message({
+                    type: 'success',
+                    message: 'copied',
+                    duration: 1000
+                })
+                e.clearSelection()
+                clipboard.destroy()
+            })
+            clipboard.on('error', () => {
+                vm.$message({
+                    type: 'warning',
+                    message: '浏览器不支持自动复制',
+                    duration: 1000
+                })
+                clipboard.destroy()
+            })
+        }
     }
-  }
 }
 </script>
 

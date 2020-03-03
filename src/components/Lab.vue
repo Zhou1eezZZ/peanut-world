@@ -1,62 +1,59 @@
 <template>
-  <div>
-    <h1>实验室 / something interesting😱</h1>
-    <el-divider />
-    <h3>可滑动卡片</h3>
-    <wipe-card
-      style="margin-top:15px;"
-      :pages="imgList"
-    />
-    <el-divider />
-    <h3>对话框形式表单</h3>
-    <el-card style="margin-top:20px">
-      <conversation-form />
-    </el-card>
-  </div>
+    <div>
+        <h1>实验室 / something interesting😱</h1>
+        <el-divider />
+        <h3>可滑动卡片</h3>
+        <wipe-card style="margin-top:15px;" :pages="imgList" />
+        <el-divider />
+        <h3>对话框形式表单</h3>
+        <el-card style="margin-top:20px">
+            <conversation-form />
+        </el-card>
+    </div>
 </template>
 
 <script>
 import WipeCard from './utils/WipeCard'
 import ConversationForm from './utils/ConversationForm'
 export default {
-  components: {
-    WipeCard,
-    ConversationForm
-  },
-  data() {
-    return {
-      imgList: [
-        {
-          id: 1,
-          src: 'https://warpcgd.github.io/vue-tantan-stack/src/img/1.png'
-        },
-        {
-          id: 2,
-          src: 'https://warpcgd.github.io/vue-tantan-stack/src/img/2.png'
-        },
-        {
-          id: 3,
-          src: 'https://warpcgd.github.io/vue-tantan-stack/src/img/3.png'
-        },
-        {
-          id: 4,
-          src: 'https://warpcgd.github.io/vue-tantan-stack/src/img/4.png'
-        },
-        {
-          id: 5,
-          src: 'https://warpcgd.github.io/vue-tantan-stack/src/img/5.png'
-        },
-        {
-          id: 6,
-          src: 'https://warpcgd.github.io/vue-tantan-stack/src/img/6.png'
-        },
-        {
-          id: 7,
-          src: 'https://warpcgd.github.io/vue-tantan-stack/src/img/7.png'
+    components: {
+        WipeCard,
+        ConversationForm
+    },
+    data() {
+        return {
+            imgList: [
+                {
+                    id: 1,
+                    src: 'https://warpcgd.github.io/vue-tantan-stack/src/img/1.png'
+                },
+                {
+                    id: 2,
+                    src: 'https://warpcgd.github.io/vue-tantan-stack/src/img/2.png'
+                },
+                {
+                    id: 3,
+                    src: 'https://warpcgd.github.io/vue-tantan-stack/src/img/3.png'
+                },
+                {
+                    id: 4,
+                    src: 'https://warpcgd.github.io/vue-tantan-stack/src/img/4.png'
+                },
+                {
+                    id: 5,
+                    src: 'https://warpcgd.github.io/vue-tantan-stack/src/img/5.png'
+                },
+                {
+                    id: 6,
+                    src: 'https://warpcgd.github.io/vue-tantan-stack/src/img/6.png'
+                },
+                {
+                    id: 7,
+                    src: 'https://warpcgd.github.io/vue-tantan-stack/src/img/7.png'
+                }
+            ]
         }
-      ]
     }
-  }
 }
 </script>
 
