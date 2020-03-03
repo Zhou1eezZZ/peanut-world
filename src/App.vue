@@ -4,7 +4,7 @@
         <div class="main-content">
             <el-scrollbar class="page-scrollbar">
                 <div class="page-content">
-                    <el-scrollbar class="page-content-nav">
+                    <el-scrollbar style="height:100%" ref="scrollbar" class="page-content-nav">
                         <div class="page-content-nav-container">
                             <h1 style="font-size:14px;color:#777;height:40px;line-height:40px">
                                 作者

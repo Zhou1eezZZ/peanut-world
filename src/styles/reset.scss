@@ -299,3 +299,7 @@ template {
 [hidden] {
     display: none;
 }
+
+:focus{
+    outline: none;
+}

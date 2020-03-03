@@ -1,88 +1,135 @@
 <template>
     <div class="color-font">
         <h1>
-            Popular palettes from
+            <el-dropdown @command="handleCommand" trigger="click">
+                <p>{{ sortTitle }}<i class="el-icon-arrow-down el-icon--right"></i></p>
+                <el-dropdown-menu slot="dropdown">
+                    <el-dropdown-item
+                        v-for="(item, i) in sorts"
+                        :key="i"
+                        :command="item.value"
+                        :disabled="sort === item.value"
+                        >{{ item.label }}</el-dropdown-item
+                    >
+                </el-dropdown-menu>
+            </el-dropdown>
+            palettes from
             <img src="https://colorhunt.co/img/color-hunt-palettes-logo.png" alt="colorhunt" />
             Color Hunt
         </h1>
         <div class="cards-wrapper">
-            <el-card v-for="(item, index) in colorArr" :key="index" class="color-card">
-                <div
-                    class="color-block block1"
-                    :style="`background-color:#${item.code.substring(0, 6)}`"
-                >
-                    <span
-                        :data-clipboard-text="`#${item.code.substring(0, 6)}`"
-                        @click="copyOnClick"
-                        >{{ `#${item.code.substring(0, 6)}` }}</span
+            <transition-group name="fade" tag="div" class="cards-wrapper">
+                <el-card v-for="item in colorArr" :key="item.id" class="color-card">
+                    <div
+                        class="color-block block1"
+                        :style="`background-color:#${item.code.substring(0, 6)}`"
                     >
-                </div>
-                <div
-                    class="color-block block2"
-                    :style="`background-color:#${item.code.substring(6, 12)}`"
-                >
-                    <span
-                        :data-clipboard-text="`#${item.code.substring(6, 12)}`"
-                        @click="copyOnClick"
-                        >{{ `#${item.code.substring(6, 12)}` }}</span
+                        <span
+                            :data-clipboard-text="`#${item.code.substring(0, 6)}`"
+                            @click="copyOnClick"
+                            >{{ `#${item.code.substring(0, 6)}` }}</span
+                        >
+                    </div>
+                    <div
+                        class="color-block block2"
+                        :style="`background-color:#${item.code.substring(6, 12)}`"
                     >
-                </div>
-                <div
-                    class="color-block block3"
-                    :style="`background-color:#${item.code.substring(12, 18)}`"
-                >
-                    <span
-                        :data-clipboard-text="`#${item.code.substring(12, 18)}`"
-                        @click="copyOnClick"
-                        >{{ `#${item.code.substring(12, 18)}` }}</span
+                        <span
+                            :data-clipboard-text="`#${item.code.substring(6, 12)}`"
+                            @click="copyOnClick"
+                            >{{ `#${item.code.substring(6, 12)}` }}</span
+                        >
+                    </div>
+                    <div
+                        class="color-block block3"
+                        :style="`background-color:#${item.code.substring(12, 18)}`"
                     >
-                </div>
-                <div
-                    class="color-block block4"
-                    :style="`background-color:#${item.code.substring(18, 24)}`"
-                >
-                    <span
-                        :data-clipboard-text="`#${item.code.substring(18, 24)}`"
-                        @click="copyOnClick"
-                        >{{ `#${item.code.substring(18, 24)}` }}</span
+                        <span
+                            :data-clipboard-text="`#${item.code.substring(12, 18)}`"
+                            @click="copyOnClick"
+                            >{{ `#${item.code.substring(12, 18)}` }}</span
+                        >
+                    </div>
+                    <div
+                        class="color-block block4"
+                        :style="`background-color:#${item.code.substring(18, 24)}`"
                     >
-                </div>
-                <div class="card-tool">
-                    <el-button plain>
-                        {{ `💖 ${item.likes}` }}
-                    </el-button>
-                    <span>{{ item.date.replace(/\//g, '-') }}</span>
-                </div>
-            </el-card>
+                        <span
+                            :data-clipboard-text="`#${item.code.substring(18, 24)}`"
+                            @click="copyOnClick"
+                            >{{ `#${item.code.substring(18, 24)}` }}</span
+                        >
+                    </div>
+                    <div class="card-tool">
+                        <el-button plain>
+                            {{ `💖 ${item.likes}` }}
+                        </el-button>
+                        <span>{{ item.date.replace(/\//g, '-') }}</span>
+                    </div>
+                </el-card>
+            </transition-group>
         </div>
     </div>
 </template>
 
 <script>
-import ColorHuntAPI from '@/api/colorhunt'
+import { getColor } from '@/api/colorhunt'
 import Clipboard from 'clipboard'
-import colorArr from '@/assets/color'
+
 export default {
     data() {
         return {
-            colorArr
+            colorArr: [],
+            step: 0,
+            sort: 'new',
+            sorts: [
+                { label: 'New', value: 'new' },
+                { label: 'Trendy', value: 'trendy' },
+                { label: 'Popular', value: 'popular' },
+                { label: 'Random', value: 'random' }
+            ],
+            loading: false
         }
     },
+    computed: {
+        sortTitle() {
+            return this.sorts.find(e => e.value === this.sort).label
+        }
+    },
+    mounted() {
+        this.getColor()
+        window.addEventListener('scroll', this.listenScrollbar, true)
+    },
+    destroyed() {
+        window.removeEventListener('scroll', this.listenScrollbar, true)
+    },
     methods: {
-        getcolor() {
-            const vm = this
-            const formData = new FormData()
-            formData.append('step', 0)
-            formData.append('sort', 'popular')
-            formData.append('tags', '')
-            ColorHuntAPI.getColor(formData).then(res => {
-                if (res.status === 200 && res.data) {
-                    const code = res.data.replace(/<script>/, '').replace(/<\/script>/, '')
-                    // eslint-disable-next-line
-          let arr = eval(code)
-                    vm.colorArr = arr
-                }
-            })
+        async getColor(flag = false) {
+            if (this.loading) return
+            try {
+                const vm = this
+                const formData = new FormData()
+                formData.append('step', this.step)
+                formData.append('sort', this.sort)
+                formData.append('tags', '')
+                this.loading = true
+                await getColor(formData).then(res => {
+                    if (res.status === 200 && res.data) {
+                        const code = res.data.replace(/<script>/, '').replace(/<\/script>/, '')
+                        // eslint-disable-next-line
+                        let arr = eval(code)
+                        if (flag) {
+                            vm.colorArr = vm.colorArr.concat(arr)
+                        } else {
+                            vm.colorArr = arr
+                        }
+                    }
+                })
+            } catch (error) {
+                this.$message.error('获取颜色出错')
+            } finally {
+                this.loading = false
+            }
         },
         copyOnClick() {
             const clipboard = new Clipboard('span')
@@ -104,6 +151,23 @@ export default {
                 })
                 clipboard.destroy()
             })
+        },
+        handleCommand(value) {
+            this.sort = value
+            this.step = 0
+            this.getColor()
+        },
+        onReachButton() {
+            if (this.loading) return
+            this.step = this.step + 1
+            this.getColor(true)
+        },
+        listenScrollbar() {
+            const bodyScrollHeight = document.body.scrollHeight // 浏览器可见高度
+            const el = document.querySelector('.page-scrollbar .el-scrollbar__wrap')
+            if (el.scrollTop >= el.scrollHeight - bodyScrollHeight - 200) {
+                this.onReachButton()
+            }
         }
     }
 }
@@ -118,6 +182,10 @@ export default {
         font-size: 24px;
         line-height: 1.22;
         margin: 24px 0;
+    }
+    p {
+        font-size: 24px;
+        cursor: pointer;
     }
     img {
         width: 24px;
